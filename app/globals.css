@@ -1,0 +1,107 @@
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+  --max-size : 1200px;
+
+  --color-main : #4B9E51;
+  --color-strong : #2d5f31;
+  --color-light : #93c597;
+  
+}
+
+/* 
+body {
+  max-width: 1200px;
+  margin-inline: auto;
+} */
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+li{
+  list-style: none;
+}
+
+
+.screen_out{
+  overflow: hidden;
+  position: absolute;
+  width: 0;
+  height: 0;
+  line-height: 0;
+  text-indent: -9999px;
+}
+
+
+
+
+/* header CSS 영역 */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding:0  3rem;
+  border-bottom: 1px solid #ededed;
+  width: 100%;
+
+}
+
+.header-menu-parents-container {
+  display: flex;
+  gap: 3rem;
+  position: relative;
+
+}
+
+
+.header-menu-child-background {
+  display: none;
+  position: absolute;
+  width: 100%;
+  height: 120px;
+  background-color: var(--color-light);
+  padding: 6px;
+  border-radius: 6px;
+}
+
+
+.header-menu-parents-container:hover .header-menu-child-background,
+.header-menu-parents-container:focus .header-menu-child-background {
+  display: block;
+
+}
+
+
+
+
+.header-menu-child-background li{
+  display: block;
+  width: 100px;
+  margin-bottom: 10px;
+}
+
+/* .header-menu-child-background li:not(:nth-last-of-type(1)){
+  margin-bottom: 10px;
+  border-bottom: 1px solid #171717;
+} */
+
+.header-menu-child-background li a{
+  display: block;
+  width: 100%;
+  padding: 2px 0;
+  padding-left: 4px;
+}
+
+.header-menu-child-background li a:hover{
+  
+  background-color: var(--color-strong);
+  color: #fff;
+}
