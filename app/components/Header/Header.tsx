@@ -156,113 +156,22 @@ const Header = () => {
           ))
         }
 
-
-
-          {/* <li>
-            <Link
-              href="/#"
-            >
-              세이브더팜즈
-            </Link>
-            <ul>
-              <li>
-                <Link
-                  href='/about'
-                  >
-                  About
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href='/vision'
-                  >
-                  Vision
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href='/partner'
-                  >
-                  Partner
-                </Link>
-              </li>
-            </ul>
-          </li>
-
-
-          <li>
-            <Link
-              href="/#"
-            >
-              사업소개
-            </Link>
-            <ul>
-              <li>
-                <Link
-                  href='/biochar'
-                  >
-                  Biochar
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href='/smartfarm'
-                  >
-                  Smart Farm
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href='/shrimp'
-                  >
-                  Shrimp Feed
-                </Link>
-              </li>
-            </ul>
-          </li>
-
-          <li>
-            <Link
-              href="/news"
-            >
-              미디어
-            </Link>
-          </li>
-
-          <li>
-            <Link
-              href="/customer"
-            >
-              고객지원
-            </Link>
-            <ul>
-              <li>
-                <Link
-                  href='/customer/faq'
-                  >
-                  FAQ
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href='customer/contact'
-                  >
-                  Contact
-                </Link>
-              </li>
-            </ul>
-          </li> */}
-
         </ul>
         {
           isHeaderOpen && (
-            <div>
+            <div
+              className="header-menu-child-background"
+            >
               <div>
 
-                {
-                  menuList.map(menu => (
-                    <ul>
+                { 
+                  menuList.map((menu, index) => (
+                    menu.children.length > 0 &&
+                    <ul
+                      className={`header-menu-child-children-${index}`}
+                    >
                       {
+                         (
                         menu.children.map((child, index) =>(
                           <li key={index}>
                             <Link
@@ -272,21 +181,12 @@ const Header = () => {
                             </Link>
                           </li>
                         ))
+                      )
                       }
                     </ul>
                   ))
 
                 }
-                <ul>
-                  {
-                    menuList?.map(menu => (
-                    <li
-                    >
-
-                    </li>   
-                    ))
-                  }
-                </ul>
               </div>
             </div>
           )
