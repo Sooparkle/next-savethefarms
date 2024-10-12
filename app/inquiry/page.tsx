@@ -1,4 +1,5 @@
 import InqueryForm from "./InquiryForm"
+import styles from './Inquiry.module.css';
 
 
 const InquiyPage = () =>{

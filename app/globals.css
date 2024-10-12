@@ -40,7 +40,9 @@ li{
   text-indent: -9999px;
 }
 
-
+legend, fieldset {
+  text-decoration: none;
+}
 
 
 /* header CSS 영역 */

@@ -1,0 +1,23 @@
+.form {
+  display: grid;
+  grid-auto-flow: row;
+  gap: 3rem;
+
+  .fieldset{
+    display: flex;
+    gap : 2rem;
+    border: none;
+    
+    .legend{
+      display: contents;
+    }
+    &>div{
+      display: flex;
+      gap: 2rem;
+    }
+  }
+
+}
+
+
+
