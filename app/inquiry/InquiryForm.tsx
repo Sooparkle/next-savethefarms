@@ -3,16 +3,26 @@ import React, { useState, useRef } from 'react';
 import styles from './Inquiry.module.css';
 import { useFormState, useFormStatus } from 'react-dom';
 import createFormActionFc from './createFormActionFc';
+import InputDesignPattern from '@/app/components/InputDesignPattern';
 
 
 type Classification<T extends string> = {
   type : readonly T[];
 }
 
-const inquiryTypes:string[] = [
-  '투자 문의',
-  '대량 구매 문의',
-  '협업 문의'
+const inquiryTypes = [
+  {
+    ko : '투자 문의',
+    en : "invest"
+  },
+  {
+    ko :'대량 구매 문의',
+    en : 'purchase'
+  },
+  {
+    ko : '협업 문의',
+    en : 'collbo'
+  }
 ]
 
 const initialState = <div>dddd</div>
@@ -24,14 +34,14 @@ const SbumitButton = () =>{
     <button
       type='submit'
       aria-disabled={pending}
-      style={{
-        background : pending ? "gray" : "inital"
-      }}
+      disabled={pending}
     >
       {pending ? '전달중...' : '문의하기'}
     </button>
   )
 }
+
+
 
 const InquiryForm = () => {
   const [ message, setMessage ] = useState<string>("");
@@ -45,6 +55,8 @@ const InquiryForm = () => {
 
   const clientAction = async (formData : FormData) => {
     const result  = await createFormActionFc(formData);
+
+
     try{
       console.log("TEST", result);
     } catch (e){
@@ -72,18 +84,19 @@ const InquiryForm = () => {
         <div>
           {
             inquiryTypes.map((item, index)=>(
-              <p>
+              <p
+                key={index}
+              >
                 <input 
-                  key={index}
                   type="radio" 
                   name='classification'
-                  id={item}
-                  value={item}
+                  id={item.en}
+                  value={item.ko}
                   onChange={handleClassification}
-                  checked={selectedClassification === item}
+                  checked={selectedClassification === item.ko}
                 />
-                <label htmlFor={item} >
-                  {item}
+                <label htmlFor={item.en} >
+                  {item.ko}
                 </label>
 
               </p>
@@ -92,37 +105,46 @@ const InquiryForm = () => {
 
         </div>
       </fieldset>
+
+      <InputDesignPattern 
+        text="이름"
+        inputType="text"
+        inputId="name"
+        placeholder="이름을 입력해주세요."
+      />
+      <InputDesignPattern 
+        text="회사정보"
+        inputType="text"
+        inputId="company"
+        placeholder="회사를 입력해주세요."
+      />
+      <InputDesignPattern 
+        text="연락처"
+        inputType="phone"
+        inputId="phone"
+        placeholder="연락처을 입력해주세요."
+      />
+      <InputDesignPattern 
+        text="이메일"
+        inputType="email"
+        inputId="email"
+        placeholder="이메일을 입력해주세요."
+      />
       
-      <div>
-        <label htmlFor="name">이름</label>
-        <input type="text" name="name" id="name"/>
-      </div>
 
       <div>
-        <label htmlFor="company">회사정보</label>
-        <input type="text" name="company" id="company"/>
-      </div>
-
-      <div>
-        <label htmlFor="phone">연락처</label>
-        <input type="tell" name="phone" id="phone"/>
-      </div>
-
-      <div>
-        <label htmlFor="email">이메일</label>
-        <input type="email" name="email" id="email"/>
-      </div>
-
-      <div>
-        <label htmlFor="content">문의내용</label>
+        <label className='message-label' htmlFor="message">문의내용</label>
         <textarea 
-          name="" 
-          id=""
+          name="message" 
+          id="message"
           value={message}
           onChange={(e) => setMessage(e.target.value)}
+          maxLength={600}
+          wrap='soft'
         >
-
         </textarea>
+
+        <span></span>
       </div>
 
       <SbumitButton />

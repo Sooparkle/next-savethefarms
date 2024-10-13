@@ -146,7 +146,9 @@ const Header = () => {
         >
         {
           menuList.map((menu, list) =>(
-            <li>
+            <li
+              key={list}
+            >
               <Link
                 href={menu.url}
               >
@@ -156,103 +158,6 @@ const Header = () => {
           ))
         }
 
-
-
-          {/* <li>
-            <Link
-              href="/#"
-            >
-              세이브더팜즈
-            </Link>
-            <ul>
-              <li>
-                <Link
-                  href='/about'
-                  >
-                  About
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href='/vision'
-                  >
-                  Vision
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href='/partner'
-                  >
-                  Partner
-                </Link>
-              </li>
-            </ul>
-          </li>
-
-
-          <li>
-            <Link
-              href="/#"
-            >
-              사업소개
-            </Link>
-            <ul>
-              <li>
-                <Link
-                  href='/biochar'
-                  >
-                  Biochar
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href='/smartfarm'
-                  >
-                  Smart Farm
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href='/shrimp'
-                  >
-                  Shrimp Feed
-                </Link>
-              </li>
-            </ul>
-          </li>
-
-          <li>
-            <Link
-              href="/news"
-            >
-              미디어
-            </Link>
-          </li>
-
-          <li>
-            <Link
-              href="/customer"
-            >
-              고객지원
-            </Link>
-            <ul>
-              <li>
-                <Link
-                  href='/customer/faq'
-                  >
-                  FAQ
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href='customer/contact'
-                  >
-                  Contact
-                </Link>
-              </li>
-            </ul>
-          </li> */}
-
         </ul>
         {
           isHeaderOpen && (
@@ -260,8 +165,10 @@ const Header = () => {
               <div>
 
                 {
-                  menuList.map(menu => (
-                    <ul>
+                  menuList.map((menu,index) => (
+                    <ul
+                      key={index}
+                    >
                       {
                         menu.children.map((child, index) =>(
                           <li key={index}>
@@ -277,16 +184,7 @@ const Header = () => {
                   ))
 
                 }
-                <ul>
-                  {
-                    menuList?.map(menu => (
-                    <li
-                    >
 
-                    </li>   
-                    ))
-                  }
-                </ul>
               </div>
             </div>
           )
