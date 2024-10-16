@@ -146,7 +146,9 @@ const Header = () => {
         >
         {
           menuList.map((menu, list) =>(
-            <li>
+            <li
+              key={list}
+            >
               <Link
                 href={menu.url}
               >
@@ -163,12 +165,12 @@ const Header = () => {
               className="header-menu-child-background"
             >
               <div>
-
                 { 
                   menuList.map((menu, index) => (
                     menu.children.length > 0 &&
                     <ul
                       className={`header-menu-child-children-${index}`}
+
                     >
                       {
                          (
@@ -187,6 +189,7 @@ const Header = () => {
                   ))
 
                 }
+
               </div>
             </div>
           )
