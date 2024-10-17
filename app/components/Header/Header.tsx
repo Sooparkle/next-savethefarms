@@ -141,8 +141,6 @@ const Header = () => {
       <nav>
         <ul
           className="header-menu-parents-container"
-          onMouseEnter={()=>setIsHeaderOpen(true)}
-          onMouseLeave={()=>setIsHeaderOpen(false)}
         >
         {
           menuList.map((menu, list) =>(
@@ -160,7 +158,6 @@ const Header = () => {
 
         </ul>
         {
-          isHeaderOpen && (
             <div
               className="header-menu-child-background"
             >
@@ -170,6 +167,7 @@ const Header = () => {
                     menu.children.length > 0 &&
                     <ul
                       className={`header-menu-child-children-${index}`}
+                      key={index}
 
                     >
                       {
@@ -192,7 +190,6 @@ const Header = () => {
 
               </div>
             </div>
-          )
         }
       </nav>
     </header>
